@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  {{ form_start(form) }}
+
+  {% set index = (form.employeeSettlementRows|length) > 0 ? form.employeeSettlementRows|last.vars.name + 1 : 0 %}
+
+  {% set prototypeRow = form.employeeSettlementRows.vars.prototype %}
+
+  {% set prototypeHtml %}
+    {% include 'employeeSettlement/_prototype_row.html.twig' with { row: prototypeRow } only %}
+  {% endset %}
+
+  {% set prototype = prototypeHtml|e('html_attr') %}
+
+  <div 
+    class="mt-5"
+    data-controller="form-collection" 
+    data-form-collection-index-value="{{ index }}" 
+    data-form-collection-prototype-value="{{ prototype|raw }}"
+  >
+    <h2>{{ currentMonth }}</h2>
+
+    {{ form_row(form.addDay) }}
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Dzień</th>
+          <th>Czas rozpoczęcia pracy</th>
+          <th>Czas zakończenia pracy</th>
+          <th>Wykonane czynności</th>
+          <th>Gdzie</th>
+          <th>Uwagi</th>
+          <th>Akcje</th>
+        </tr>
+      </thead>
+      <tbody data-form-collection-target="collectionContainer">
+        {% for row in form.employeeSettlementRows %}
+          {% include 'employeeSettlement/_prototype_row.html.twig' with { row: row } only %}
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {{ form_errors(form) }}
+
+    {{ form_row(form.submit) }}
+  </div>
+
+  {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,14 @@
+.env.dev
+.env.prod
+.env.test
+.git
+vendor/
+var/
+docker-compose.yml
+Dockerfile
+.dockerignore
+.gitignore
+public/assets/
+composer.lock
+.symfony.local.yaml
+assets/vendor

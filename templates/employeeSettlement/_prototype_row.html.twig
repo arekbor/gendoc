@@ -1,0 +1,45 @@
+<tr>
+  <td>
+    {{ form_widget(row.day) }}
+    <div class="small-text">
+        {{ form_errors(row.day) }}
+    </div>
+  </td>
+
+  <td>
+    {{ form_widget(row.startTime) }}
+    <div class="small-text">
+        {{ form_errors(row.startTime) }}
+    </div>
+  </td>
+
+  <td>
+    {{ form_widget(row.endTime) }}
+    <div class="small-text">
+        {{ form_errors(row.endTime) }}
+    </div>
+  </td>
+
+  <td>
+    {{ form_widget(row.activities) }}
+    <div class="small-text">
+        {{ form_errors(row.activities) }}
+    </div>
+  </td>
+
+  <td>
+    {{ form_widget(row.place) }}
+    <div class="small-text">
+        {{ form_errors(row.place) }}
+    </div>
+  </td>
+
+  <td>
+    {{ form_widget(row.comment) }}
+    <div class="small-text">
+        {{ form_errors(row.comment) }}
+    </div>
+  </td>
+
+  <td>{{ form_row(row.remove) }}</td>
+</tr>
