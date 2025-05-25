@@ -3,6 +3,7 @@ version: "3.8"
 services:
   web:
     restart: always
+    container_name: gendoc
     build: .
     ports:
       - 8085:80
