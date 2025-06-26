@@ -8,13 +8,7 @@ export default class extends Controller {
     prototype: String,
   };
 
-  connect() {
-    // this.updateAvailableDays();
-  }
-
   addCollectionElement() {
-    //TODO: przerób na jquery
-
     const rowHtml = this.prototypeValue.replace(/__name__/g, this.indexValue);
     const row = document.createElement("tr");
     row.innerHTML = rowHtml;
@@ -24,9 +18,11 @@ export default class extends Controller {
     this.updateAvailableDays();
   }
 
-  removeCollectionElement(event) {
-    //TODO: przerób na jquery
+  onDayChange() {
+    this.updateAvailableDays();
+  }
 
+  removeCollectionElement(event) {
     const button = event.currentTarget;
     const row = button.closest("tr");
     if (row) {

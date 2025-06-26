@@ -32,6 +32,10 @@ final class EmployeeSettlementRowType extends AbstractType
                     return $value === 0 ? 'Wybierz dzień' :
                         $value . ' ' . $this->employeeSettlementService->getDayName($value, $options['month'], $options['year']);
                 },
+                'attr' => [
+                    'data-controller' => 'form-collection',
+                    'data-action' => 'change->form-collection#onDayChange',
+                ],
                 'constraints' => [
                     new GreaterThan(value: 0, message: 'Dzień nie został wybrany.')
                 ]
